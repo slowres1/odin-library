@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    margin: 0;
+    
+    padding: 2rem;
+    height: 800px;
+    width: 800px;
+    background-color: #d3d3d3;
+}
+
+.card {
+    height: 200px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #909090;
+    border-radius: .5rem;
+    padding: .5rem;
+    position: relative;
+    box-shadow: 0 .2rem .5rem -.3rem black;
+    color: #333333;
+}
+
+.card:hover {
+    top: -.1rem;
+}
+
+.card h1 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin: 0;
+}
