@@ -7,8 +7,8 @@ function Book(title,author,pages,read) {
     this.read = read;
 };
 
-function addBookToLibrary (book) {
-    let newBook = book;
+function addBookToLibrary (userInput) {
+    let newBook = new Book(userInput[0], userInput[1], userInput[2], userInput[3]);
     myLibrary.push(newBook);
 }
 
@@ -22,20 +22,34 @@ function displayBooks(library) {
         title.textContent = library[i].title;
         let author = document.createElement('h2');
         author.textContent = library[i].author;
+        let pages = document.createElement('p');
+        pages.textContent = `${library[i].pages} pages long`
+        let readStatus = document.createElement('p');
+        readStatus.textContent = haveRead;
         
         newCard.appendChild(title);
         newCard.appendChild(author);
+        newCard.appendChild(pages);
+        newCard.appendChild(readStatus);
         container.appendChild(newCard);
-        
-        console.log(`Book ${i+1}: ${library[i].title} by ${library[i].author}, ${library[i].pages} pages long. ${haveRead}`);
+        //console.log(`Book ${i+1}: ${library[i].title} by ${library[i].author}, ${library[i].pages} pages long. ${haveRead}`);
     };
 }
 
+function getUserInput () {
+    const newForm = document.createElement('form');
+    newForm.setAttribute('action', './index.html');
+    newForm.setAttribute('method', 'post');
+
+    const newInput = document.createElement('input');
+}
+
+
 const container = document.querySelector('.container');
 
-let book1 = new Book("Mordew", "Alex Pheby", 700, false);
-let book2 = new Book("dog","ben",400,false);
-addBookToLibrary(book1);
-addBookToLibrary(book2);
+//let book1 = new Book("Mordew", "Alex Pheby", 700, false);
+//let book2 = new Book("Boerke", "Kijkt Kunst", 50, true);
+addBookToLibrary(["Mordew", "Alex Pheby", 700, false]);
+addBookToLibrary(["Boerke", "Kijkt Kunst", 50, true]);
 
 displayBooks(myLibrary);
