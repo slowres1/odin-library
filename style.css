@@ -10,18 +10,18 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, clamp(250px, 20vw, 400px));
     grid-template-rows: fit-content(1fr);
     gap: 2rem;
     margin: 0;
     padding: 2rem;
-    height: 800px;
-    width: 800px;
+    height: 100vh;
+    width: 100vw;
     background-color: #d3d3d3;
 }
 
-.card,
-.add-book {
+
+.card {
     box-sizing: border-box;
     height: var(--cardHeight);
     background-color: white;
@@ -35,20 +35,8 @@ body {
     color: #333333;
 }
 
-.add-book {
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.card:hover,
-.add-book:hover {
+.card:hover {
     top: -.1rem;
-}
-
-.add-book:active {
-    top: 0;
 }
 
 .card h1 {
@@ -61,4 +49,16 @@ body {
     font-size: 1.2rem;
     font-style: italic;
     margin: 0;
+}
+
+.add-book {
+    display:flex;
+    flex-direction: column;
+    gap: 0.03rem;
+    justify-content: space-between;
+    flex: 1 0 auto;
+}
+
+input:last-child {
+    width: 6rem;
 }

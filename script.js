@@ -37,11 +37,9 @@ function displayBooks(library) {
 }
 
 function getUserInput () {
-    const newForm = document.createElement('form');
-    newForm.setAttribute('action', './index.html');
-    newForm.setAttribute('method', 'post');
-
-    const newInput = document.createElement('input');
+    const title = document.querySelector('#title');
+    const author = document.querySelector('#author');
+    const pages = document.querySelector('#pages');
 }
 
 
