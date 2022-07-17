@@ -1,64 +1,48 @@
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-:root {
-    --cardHeight: 216px;
+h1 {
+    font-size: 1.4rem;
+    font-weight: bold;
 }
 
+h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
 
 .container {
     display: grid;
-    grid-template-columns: repeat(5, clamp(250px, 20vw, 400px));
-    grid-template-rows: fit-content(1fr);
-    gap: 2rem;
-    margin: 0;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 16rem);
+    gap: 1rem;
     padding: 2rem;
-    height: 100vh;
-    width: 100vw;
-    background-color: #d3d3d3;
+    background-color: lightblue;
 }
 
-
-.card {
-    box-sizing: border-box;
-    height: var(--cardHeight);
+.card,
+.test {
+    padding: 1rem;
+    border: 0.1rem solid yellow;
+    border-radius: 1rem;
     background-color: white;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #909090;
-    border-radius: .5rem;
-    padding: .5rem;
-    position: relative;
-    box-shadow: 0 .2rem .5rem -.3rem black;
-    color: #333333;
-}
-
-.card:hover {
-    top: -.1rem;
-}
-
-.card h1 {
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin: 0;
-}
-
-.card h2 {
-    font-size: 1.2rem;
-    font-style: italic;
-    margin: 0;
-}
-
-.add-book {
-    display:flex;
-    flex-direction: column;
-    gap: 0.03rem;
-    justify-content: space-between;
-    flex: 1 0 auto;
-}
-
-input:last-child {
-    width: 6rem;
 }
