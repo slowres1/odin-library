@@ -11,7 +11,7 @@ function Book(title, author, pages, read) {
 function addBooktoLibrary() {
 
     const popup = document.createElement('div');
-    popup.classList.add('modal');
+    popup.classList.add('modal', 'flex');
     
     const exitButton = document.createElement('button');
     exitButton.textContent = 'Exit';
@@ -20,9 +20,10 @@ function addBooktoLibrary() {
     })
 
     const form = document.createElement('div');
+    form.classList.add('flex','column');
     
     const title = document.createElement('input');
-
+    
 
     const submitButton = document.createElement('button');
     submitButton.textContent = 'Submit';
@@ -35,10 +36,11 @@ function addBooktoLibrary() {
         container.removeChild(popup);
     })
 
-    popup.appendChild(exitButton);
-    popup.appendChild(title);
-    popup.appendChild(submitButton);
+    form.appendChild(exitButton);
+    form.appendChild(title);
+    form.appendChild(submitButton);
 
+    popup.appendChild(form);
     container.appendChild(popup);
 
     //lets make this a modal - first - CSS
