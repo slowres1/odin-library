@@ -1,5 +1,9 @@
 /*global*/
 
+body {
+    margin: 0;
+}
+
 .flex {
     display: flex;
     justify-content: center;
@@ -16,17 +20,20 @@
     height: 100vh;
     display: grid;
     grid-template-rows: 1fr 8fr;
+    padding: 1rem;
 }
 
 .card {
-    width: 400px;
+    width: auto;
     height: 400px;
     border: 2px solid black;
+    padding: .5rem;
 }
 
 .library {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
 }
 
 

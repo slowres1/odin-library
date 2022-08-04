@@ -95,7 +95,7 @@ function renderBook(book) {
     title.textContent = book.title;
 
     const author = document.createElement('h2');
-    author.textContent = book.author;
+    author.textContent = `by ${book.author}`;
 
     const pages = document.createElement('p');
     pages.textContent = `${book.pages} pages`;
