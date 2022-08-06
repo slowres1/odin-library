@@ -20,20 +20,29 @@ body {
     height: 100vh;
     display: grid;
     grid-template-rows: 1fr 8fr;
-    padding: 1rem;
+}
+
+.header {
+    background-color: #eeeeee;
+    gap: 1rem;
+    padding: 0rem 1rem;
 }
 
 .card {
+    justify-content: center;
+    align-items: center;
     width: auto;
     height: 400px;
     border: 2px solid black;
     padding: .5rem;
+
 }
 
 .library {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+    padding: 1rem;
 }
 
 
@@ -63,6 +72,33 @@ body {
 
 
 /*components*/
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-right: auto;
+    flex: 1;
+}
+
+.header button {
+    flex: 0 0 auto;
+    height: 3rem;
+    width: auto;
+    font-size: 1.8rem;
+    color: white;
+    padding: .5rem;
+    background-color: red;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.header button:hover {
+    background-color: rgb(180,0,0);
+}
+
+.header button:active {
+    background-color: rgb(148, 0, 0);
+    box-shadow: .1rem .1rem 0 0 rgb(100,0,0) inset;
+}
 
 .label {
     display: flex;

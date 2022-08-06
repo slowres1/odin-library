@@ -5,7 +5,7 @@ function Book(title, author, pages, read) {
     this.title = title
     this.author = author
     this.pages = pages
-    this.read = read ? "I have read this book." : "I have not read this book."
+    this.read = read
 }
 
 function getUserInput() {
@@ -25,7 +25,7 @@ function getUserInput() {
     //const title = document.createElement('input');
     const title = createLabelInputPair('title','text');
     const author = createLabelInputPair('author','text');
-    const pages = createLabelInputPair('pages','text');
+    const pages = createLabelInputPair('pages','number');
     const checkRead = createLabelInputPair('checkRead','checkbox');
     //checkRead.setAttribute('type','checkbox');
 
@@ -57,21 +57,26 @@ function createLabelInputPair(name, type) {
     newLabel.classList.add('label');
     newLabel.setAttribute('for',name);
     let labelName;
+    //let placeholder;
     switch (name) {
         case 'title':
             labelName = 'Title: ';
+            //placeholder = 'Title';
             break;
         case 'author':
             labelName = 'Author: ';
+            //placeholder = 'Author';
             break;
         case 'pages':
             labelName = 'Number of pages: ';
+            newInput.setAttribute('min','1');
             break;
         case 'checkRead':
             labelName = 'Have you read this book?';
             break;
     }
     newLabel.textContent = labelName;
+    //newInput.setAttribute('required',true);
     pair.appendChild(newLabel);
     pair.appendChild(newInput);
     return pair;
@@ -88,7 +93,7 @@ function addBookToLibrary(title, author, pages, checkRead) {
 function renderBook(book) {
     //create a card for each book in the library with the corresponding info.
     const card = document.createElement('div');
-    card.classList.add('card');
+    card.classList.add('card','flex','column');
     card.setAttribute('id',library.indexOf(book));
 
     const title = document.createElement('h1');
@@ -98,10 +103,17 @@ function renderBook(book) {
     author.textContent = `by ${book.author}`;
 
     const pages = document.createElement('p');
-    pages.textContent = `${book.pages} pages`;
+    if (book.pages === '1') {
+        pages.textContent = `${book.pages} page`;
+    } else {
+        pages.textContent = `${book.pages} pages`;
+    }
+    
 
     const read = document.createElement('p');
-    read.textContent = book.read;
+    let readText = book.read ? "I have read this book." : "I have not read this book.";
+    read.textContent = readText;
+
 
     const removeBookButton = document.createElement('button');
     removeBookButton.textContent = 'Remove';
@@ -111,16 +123,34 @@ function renderBook(book) {
         refreshLibrary();
     });
 
+    const toggleReadButton = document.createElement('button');
+    toggleReadButton.textContent = 'Change Read status';
+    toggleReadButton.addEventListener('click', () => {
+        toggleReadStatus(toggleReadButton.parentNode.id);
+        refreshLibrary();
+    })
+
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(pages);
     card.appendChild(read);
     card.appendChild(removeBookButton);
+    card.append(toggleReadButton);
     container.appendChild(card);
 }
 
 function removeBookFromLibrary(id) {
     return library.splice(id, 1);
+}
+
+function toggleReadStatus(id) {
+    let status = library[id].read;
+    if (status === true) {
+        status = false;
+    } else if (status === false) {
+        status = true;
+    }
+    return library[id].read = status;
 }
 
 function refreshLibrary() {
@@ -132,6 +162,8 @@ function refreshLibrary() {
         renderBook(book);
     })
 }
+
+
 
 const addBookButton = document.querySelector('.add-book');
 addBookButton.addEventListener('click', () => {
